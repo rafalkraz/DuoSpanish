@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../style-ex-listening.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div style="border: 2px solid rgb(145, 145, 145); border-radius: 10px; width: 300px; margin: auto;">
+            <h3 class="title-of-section">Lekcja ukończona!</h3>
+            <img src="../../../images/done.svg" alt="Done sign" width="100px;"><br>
+            <button class="button-5" style="margin-top: 20px; margin-bottom: 20px;" role="button" onclick="window.top.postMessage('goToNextPart');">Idź do części 3</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    window.onload = function() {
+        playS();
+    }
+
+    function playS() {
+        var snd = new Audio("../../../sounds/lessonDone.mp3");
+        snd.play();
+        snd.currentTime = 0;
+    }
+</script>
+</html>

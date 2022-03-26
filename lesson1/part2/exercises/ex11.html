@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../style-ex-pairs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h3 class="title-of-section">Połącz wyrazy w pary</h3>
+        <div style="width: 49%; overflow: hidden; text-align: center; display: inline-block;">
+            <div class="option" onclick="selectS1();" id="option1">
+                <p>jestem</p>
+            </div>
+            <div class="option" onclick="selectS2();" id="option2">
+                <p>dziewczyna</p>
+            </div>
+            <div class="option" onclick="selectS3();" id="option3">
+                <p>kobieta</p>
+            </div>
+            <div class="option" onclick="selectS4();" id="option4">
+                <p>ja</p>
+            </div>
+            <div class="option" onclick="selectS5();" id="option5">
+                <p>mężczyzna</p>
+            </div>
+        </div>
+        <div style="width: 49%; overflow: hidden; text-align: center; display: inline-block;">
+            <div class="option" onclick="selectS6();" id="option6">
+                <p>niña</p>
+            </div>
+            <div class="option" onclick="selectS7();" id="option7">
+                <p>soy</p>
+            </div>
+            <div class="option" onclick="selectS8();" id="option8">
+                <p>mujer</p>
+            </div>
+            <div class="option" onclick="selectS9();" id="option9">
+                <p>yo</p>
+            </div>
+            <div class="option" onclick="selectS10();" id="option10">
+                <p>hombre</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let option1 = document.getElementById("option1");
+    let option2 = document.getElementById("option2");
+    let option3 = document.getElementById("option3");
+    let option4 = document.getElementById("option4");
+    let option5 = document.getElementById("option5");
+    let option6 = document.getElementById("option6");
+    let option7 = document.getElementById("option7");
+    let option8 = document.getElementById("option8");
+    let option9 = document.getElementById("option9");
+    let option10 = document.getElementById("option10");
+    let selected1 = null;
+    let selected2 = null;
+    let isFirstRowSelected = false;
+    let isSecondRowSelected = false;
+    let correct = 0;
+    
+    const options = {
+        '1': option1,
+        '2': option2,
+        '3': option3,
+        '4': option4,
+        '5': option5,
+        '6': option6,
+        '7': option7,
+        '8': option8,
+        '9': option9,
+        '10': option10,
+    }
+
+    function selectS1() {
+        option1.classList.add('checked');
+        option2.classList.remove('checked');
+        option3.classList.remove('checked');
+        option4.classList.remove('checked');
+        option5.classList.remove('checked');
+        isFirstRowSelected = true;
+        selected1 = 1;
+        check();
+    }
+
+    function selectS2() {
+        option1.classList.remove('checked');
+        option2.classList.add('checked');
+        option3.classList.remove('checked');
+        option4.classList.remove('checked');
+        option5.classList.remove('checked');
+        isFirstRowSelected = true;
+        selected1 = 2;
+        check();
+    }
+
+    function selectS3() {
+        option1.classList.remove('checked');
+        option2.classList.remove('checked');
+        option3.classList.add('checked');
+        option4.classList.remove('checked');
+        option5.classList.remove('checked');
+        isFirstRowSelected = true;
+        selected1 = 3;
+        check();
+    }
+
+    function selectS4() {
+        option1.classList.remove('checked');
+        option2.classList.remove('checked');
+        option3.classList.remove('checked');
+        option4.classList.add('checked');
+        option5.classList.remove('checked');
+        isFirstRowSelected = true;
+        selected1 = 4;
+        check();
+    }
+
+    function selectS5() {
+        option1.classList.remove('checked');
+        option2.classList.remove('checked');
+        option3.classList.remove('checked');
+        option4.classList.remove('checked');
+        option5.classList.add('checked');
+        isFirstRowSelected = true;
+        selected1 = 5;
+        check();
+    }
+
+    function selectS6() {
+        var snd = new Audio("../sounds/girl.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option6.classList.add('checked');
+        option7.classList.remove('checked');
+        option8.classList.remove('checked');
+        option9.classList.remove('checked');
+        option10.classList.remove('checked');
+        isSecondRowSelected = true;
+        selected2 = 6;
+        check();
+    }
+
+    function selectS7() {
+        var snd = new Audio("../sounds/am.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option6.classList.remove('checked');
+        option7.classList.add('checked');
+        option8.classList.remove('checked');
+        option9.classList.remove('checked');
+        option10.classList.remove('checked');
+        isSecondRowSelected = true;
+        selected2 = 7;
+        check();
+    }
+
+    function selectS8() {
+        var snd = new Audio("../sounds/woman.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option6.classList.remove('checked');
+        option7.classList.remove('checked');
+        option8.classList.add('checked');
+        option9.classList.remove('checked');
+        option10.classList.remove('checked');
+        isSecondRowSelected = true;
+        selected2 = 8;
+        check();
+    }
+
+    function selectS9() {
+        var snd = new Audio("../sounds/I.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option6.classList.remove('checked');
+        option7.classList.remove('checked');
+        option8.classList.remove('checked');
+        option9.classList.add('checked');
+        option10.classList.remove('checked');
+        isSecondRowSelected = true;
+        selected2 = 9;
+        check();
+    }
+
+    function selectS10() {
+        var snd = new Audio("../sounds/man.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option6.classList.remove('checked');
+        option7.classList.remove('checked');
+        option8.classList.remove('checked');
+        option9.classList.remove('checked');
+        option10.classList.add('checked');
+        isSecondRowSelected = true;
+        selected2 = 10;
+        check();
+    }
+
+
+    function check() {
+        if (isFirstRowSelected && isSecondRowSelected) {
+            if (checkPair(1, 7)) {}
+            else if (checkPair(2, 6)) {}
+            else if (checkPair(3, 8)) {}
+            else if (checkPair(4, 9)) {}
+            else if (checkPair(5, 10)) {}
+            else {
+                var snd = new Audio("../../../sounds/wrongAnswer.mp3");
+                snd.play();
+                snd.currentTime = 0;
+            }
+        }
+    }
+
+    function checkPair(first, second) {
+        options[selected1].classList.remove('checked');
+        options[selected2].classList.remove('checked');
+        isFirstRowSelected = false;
+        isSecondRowSelected = false;
+        if (selected1 == first && selected2 == second) {
+            correct += 1;
+            options[selected1].classList.add('disabled');
+            options[selected2].classList.add('disabled');
+            options[selected1].onclick = null;
+            options[selected2].onclick = null;
+
+            if (correct == 5) {
+                window.top.postMessage('clickCheckButton');
+            }
+            else {
+                var snd = new Audio("../../../sounds/correctAnswer.mp3");
+                snd.play();
+                snd.currentTime = 0;
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    window.onmessage = function(e) {
+        if (e.data == 'check') {
+            window.top.postMessage('correct');
+        }
+    }
+</script>
+</html>

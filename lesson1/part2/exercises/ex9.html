@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../style-ex-multiple.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h3 class="title-of-section">Jak powiesz "jestem"?</h3>
+        <div style="width: 100%; overflow: hidden; text-align: center;">
+            <div class="option" id="option1" onclick="selectS1();">
+                <p>mujer</p>
+            </div>
+            <div class="option" onclick="selectS2();" id="option2">
+                <p>soy</p>
+            </div>
+            <div class="option" onclick="selectS3();" id="option3">
+                <p>niña</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let option1 = document.getElementById("option1");
+    let option2 = document.getElementById("option2");
+    let option3 = document.getElementById("option3");
+    let selected = null;
+    const correct = 2;
+    
+
+    function selectS1() {
+        var snd = new Audio("../sounds/woman.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option1.classList.add('checked');
+        option2.classList.remove('checked');
+        option3.classList.remove('checked');
+        unlockCheckButton();
+        selected = 1;
+    }
+
+    function selectS2() {
+        var snd = new Audio("../sounds/am.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option2.classList.add('checked');
+        option1.classList.remove('checked');
+        option3.classList.remove('checked');
+        unlockCheckButton();
+        selected = 2;
+    }
+
+    function selectS3() {
+        var snd = new Audio("../sounds/girl.mp3");
+        snd.play();
+        snd.currentTime = 0;
+
+        option3.classList.add('checked');
+        option1.classList.remove('checked');
+        option2.classList.remove('checked');
+        unlockCheckButton();
+        selected = 3;
+    }
+
+    function unlockCheckButton() {
+        window.top.postMessage('unlockCheckButton');
+    }
+
+    window.onmessage = function(e) {
+        if (e.data == 'check') {
+            if (selected == correct) {
+                window.top.postMessage('correct');
+            }
+            else {
+                window.top.postMessage('incorrect');
+            }
+        }
+        else if (e.data == 'sendAnswerToVar') {
+             window.parent.textToDisplayOnResultDiv = "soy";
+        }
+    }
+</script>
+</html>

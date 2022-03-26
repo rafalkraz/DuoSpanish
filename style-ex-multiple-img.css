@@ -1,0 +1,40 @@
+html {
+    font-family: 'Lato', sans-serif;
+    width: 70%;
+    margin: auto;
+}
+
+.option {
+    width: 180px;
+    border: 2px solid rgb(145, 145, 145);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-align: center;
+    padding-top: 15px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.checked {
+    border: 2px solid #84D8FF;
+    background-color: #DDF4FF;
+}
+
+.option img {
+    width: 150px;
+}
+
+.title-of-section {
+    font-size: 18pt;
+}
+
+.orange-text {
+    color: #FA6400;
+    font-weight: bold;
+}
+
+#container {
+    text-align: center;
+}

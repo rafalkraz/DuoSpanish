@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Lekcja 1 - część 2 z 6</title>
+</head>
+<body>
+    <button class="button-5" role="button" onclick="window.location.href='../lessons-list.html'">Zakończ lekcję</button>
+    <button class="button-5" role="button" onclick="reloadIframe();">Odśwież iFrame</button>
+    <button class="button-5" role="button" onclick="window.open('../dictionary/home.html')">Podpowiedź</button>
+    <p id="questionCounter">Pozostało</p>
+    <div class="title">
+        <h1 style="margin-bottom: 5px;">Lekcja 1</h1>
+        <h2 style="margin-top: 10px;">część 2 z 6</h2>
+    </div>
+    <div id="exercise-wrapper">
+
+    </div>
+    <button class="button-5" id="checkButton" role="button" onclick="checkAnswer();">Sprawdź</button>
+    <div class="result-div result-div-hidden" id="result-div-id">
+        <div style="margin-bottom: 20px; margin-left: 10px;">
+            <h3 id="result-div-title"></h3>
+            <button class="button-5" id="checkButton" role="button" onclick="goToNextQuestion();">Kontynuuj</button>
+        </div>
+    </div>
+</body>
+<script>
+    let exercisesNotDone = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
+    let questionNow = 1;
+    let numberOfAnsweredQuestions = 0;
+    const checkButton = document.getElementById("checkButton");
+    const questionCounter = document.getElementById("questionCounter");
+    window.textToDisplayOnResultDiv = "not defined";
+
+    window.onload = function() {
+        loadQuestionIntoWrapper("1");
+        disableCheckButton();
+    }
+
+    function disableCheckButton() {
+        checkButton.disabled = true;
+    }
+
+    function enableCheckButton() {
+        checkButton.disabled = false;
+    }
+
+    function loadQuestionIntoWrapper(exerciseId) {
+        document.getElementById("exercise-wrapper").innerHTML = `<iframe src="part2/exercises/ex${exerciseId}.html" id="ifrm">`;
+        if (exercisesNotDone.length == 1) {
+            questionCounter.innerHTML = "Pozostało 1 pytanie."
+        }
+        else if (exercisesNotDone.length > 1 && exercisesNotDone.length < 4) {
+            questionCounter.innerHTML = `Pozostały ${exercisesNotDone.length} pytania.`
+        }
+        else {
+            questionCounter.innerHTML = `Pozostało ${exercisesNotDone.length} pytań.`
+        }
+    }
+
+    function checkAnswer() {
+        document.getElementById("ifrm").contentWindow.postMessage('sendAnswerToVar');
+        document.getElementById("ifrm").contentWindow.postMessage('check');
+    }
+
+    function goToNextQuestion() {
+        document.getElementById("result-div-id").classList.remove("result-ok");
+        document.getElementById("result-div-id").classList.remove("result-wrong");
+        document.getElementById("result-div-id").classList.add("result-div-hidden");
+        disableCheckButton();
+        if (exercisesNotDone.length == 0) {
+            checkButton.style.visibility = "hidden";
+            loadQuestionIntoWrapper("end");
+        } 
+        else {
+            loadQuestionIntoWrapper(exercisesNotDone[0]);
+        }
+    }
+
+    function playCorrectAnswerSound() {
+        var snd = new Audio("../sounds/correctAnswer.mp3");
+        snd.play();
+        snd.currentTime = 0;
+    }
+
+    function playIncorrectAnswerSound() {
+        var snd = new Audio("../sounds/wrongAnswer.mp3");
+        snd.play();
+        snd.currentTime = 0;
+    }
+
+    function showResult(result) {
+        if (result == "correct") {
+            document.getElementById("result-div-title").innerHTML = "Dobra robota!";
+            document.getElementById("result-div-id").classList.add("result-ok");
+            document.getElementById("result-div-id").classList.remove("result-wrong");
+            document.getElementById("result-div-id").classList.remove("result-div-hidden");
+        }
+        else {
+            document.getElementById("result-div-title").innerHTML = `Prawidłowa odpowiedź to: <p>${textToDisplayOnResultDiv}</p>`;
+            document.getElementById("result-div-id").classList.add("result-wrong");
+            document.getElementById("result-div-id").classList.remove("result-ok");
+            document.getElementById("result-div-id").classList.remove("result-div-hidden");
+        }
+    }
+    
+    window.onmessage = function(e) {
+        if (e.data == 'correct') {
+            playCorrectAnswerSound();
+            exercisesNotDone.shift();
+            showResult("correct");
+        }
+        else if (e.data == 'incorrect') {
+            playIncorrectAnswerSound();
+            exercisesNotDone.push(exercisesNotDone.splice(0, 1)[0]);
+            showResult("incorrect");
+        }
+        else if (e.data == 'unlockCheckButton') {
+            enableCheckButton();
+        }
+        else if (e.data == 'clickCheckButton') {
+            checkAnswer();
+        }
+        else if (e.data == 'goToNextPart') {
+            window.location.href='part3.html';
+        }
+    }
+
+    function reloadIframe() {
+        var iframe = document.getElementById('ifrm');
+        iframe.src = iframe.src;
+    }
+</script>
+</html>

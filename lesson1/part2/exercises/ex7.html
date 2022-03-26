@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../style-ex-writing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h3 class="title-of-section">Napisz to po polsku</h3>
+        <div style="width: 100%; overflow: hidden; text-align: center;">
+            <div class="sentence">
+                <p><a class="play-sound" onclick="playS();">🔊</a>La mujer.</p>
+            </div>
+        </div>
+        <input type="text" name="answer" placeholder="Tutaj wpisz odpowiedź" id="answer"></input>
+    </div>
+</body>
+<script>
+
+    const answerTextBox = document.getElementById("answer");
+
+    window.onload = function() {
+        playS();
+    }
+
+    function playS() {
+        var snd = new Audio("../sounds/s2.mp3");
+        snd.play();
+        snd.currentTime = 0;
+    }
+
+    answerTextBox.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            if (answerTextBox.value != "") {
+                event.preventDefault();
+                window.top.postMessage('clickCheckButton');
+            }
+        }
+    });
+
+    answerTextBox.addEventListener("input", function() {
+        unlockCheckButton();
+    });
+
+    function unlockCheckButton() {
+        window.top.postMessage('unlockCheckButton');
+    }
+
+    function checkAnswer() {
+        answerTextBox.disabled = true;
+        let userAnswer = answerTextBox.value;
+        const correctanswer1 = "kobieta";
+        userAnswer = userAnswer.replace(".", "");
+        userAnswer = userAnswer.replace(",", "");
+        userAnswer = userAnswer.replace(";", "");
+        userAnswer = userAnswer.replace("?", "");
+        userAnswer = userAnswer.toLowerCase();
+        console.log(userAnswer);
+        if (userAnswer == correctanswer1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    window.onmessage = function(e) {
+        if (e.data == 'check') {
+            if (checkAnswer()) {
+                window.top.postMessage('correct');
+            }
+            else {
+                window.top.postMessage('incorrect');
+            }
+        }
+        else if (e.data == 'sendAnswerToVar') {
+             window.parent.textToDisplayOnResultDiv = "kobieta";
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Lekcje</title>
+</head>
+<body>
+    <button class="button-5" role="button" onclick="window.location.href='../lessons-list.html'">Zakończ lekcję</button>
+    <div class="title">
+        <h1 style="margin-bottom: 5px;">Lekcja 1</h1>
+        <h2 style="margin-top: 10px;">część 1 z 6</h2>
+    </div>
+    <div id="info-container">
+        <h3 class="title-of-section">Jabłko jest dziewczyną?!</h3>
+        <p style="margin-bottom: 40px;">W hiszpańskim nie tylko ludzie mają są rodzaju <span class="orange-text">męskiego</span> lub <span class="orange-text">żeńskiego</span>. Rzeczy także mają płeć!</p>
+        <div class="wrapper">
+            <div style="width: 100px; float: left; margin-left: 10px;">
+                <button class="button-5" style="font-size: 20pt; margin-top: 20px;" role="button" onclick="playS3();">🔊</button>
+            </div>
+            <div style="width: 250px; float: left;">
+                <p><span class="orange-text">el</span> pan</p>
+                <p>chleb</p>
+            </div>
+            <div style="width: 100px; float: left;">
+                <img src="part1/images/bread.svg" alt="Bread picture" class="img-in-info">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div style="width: 100px; float: left; margin-left: 10px;">
+                <button class="button-5" style="font-size: 20pt; margin-top: 20px;" role="button" onclick="playS4();">🔊</button>
+            </div>
+            <div style="width: 250px; float: left;">
+                <p><span class="orange-text">la</span> manzana</p>
+                <p>jabłko</p>
+            </div>
+            <div style="width: 100px; float: left;">
+                <img src="part1/images/apple.svg" alt="Apple picture" class="img-in-info">
+            </div>
+        </div>
+        <p style="margin-bottom: 40px;">Nie jesteś pewny jakiego rodzaju jest rzecz? Spójrz na <span class="orange-text">rodzajnik</span>! Jeśli zobaczysz <span class="orange-text">el</span> słowo jest <span class="orange-text">męskie</span>, jeśli <span class="orange-text">la </span>słowo jest <span class="orange-text">żeńskie</span>.</p>
+        <div style="text-align: center;">
+            <button class="button-5" role="button" onclick="window.location.href='part1-1.html'">Wstecz</button>
+            <button class="button-5" role="button" onclick="window.location.href='part1-3.html'">Dalej</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function playS3() {
+        var snd = new Audio("part1/sounds/s3.mp3")
+        snd.play()
+        snd.currentTime = 0;
+    }
+
+    function playS4() {
+        var snd = new Audio("part1/sounds/s4.mp3")
+        snd.play()
+        snd.currentTime = 0;
+    }
+    
+</script>
+</html>

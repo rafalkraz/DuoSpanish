@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Lekcje</title>
+</head>
+<body>
+    <button class="button-5" role="button" onclick="window.location.href='../lessons-list.html'">Zakończ lekcję</button>
+    <div class="title">
+        <h1 style="margin-bottom: 5px;">Lekcja 1</h1>
+        <h2 style="margin-top: 10px;">część 1 z 6</h2>
+    </div>
+    <div id="info-container">
+        <h3 class="title-of-section">Rodzaj rzeczownika</h3>
+        <p style="margin-bottom: 40px;">W hiszpańskim wszystkie rzeczowniki (czyli słowa oznaczające osobę lub rzecz) są <span class="orange-text">męskie</span> lub <span class="orange-text">żeńskie</span>. Bardzo często rzeczowniki kończące się na <span class="orange-text">-o</span> są męskie, a kończące na <span class="orange-text">-a</span> żeńskie.</p>
+        <div class="wrapper">
+            <div style="width: 100px; float: left; margin-left: 10px;">
+                <button class="button-5" style="font-size: 20pt; margin-top: 20px;" role="button" onclick="playS1();">🔊</button>
+            </div>
+            <div style="width: 250px; float: left;">
+                <p><span class="orange-text">el</span> niñ<span class="orange-text">o</span></p>
+                <p>chłopiec</p>
+            </div>
+            <div style="width: 100px; float: left;">
+                <img src="part1/images/boy.svg" alt="Boy picture" class="img-in-info">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div style="width: 100px; float: left; margin-left: 10px;">
+                <button class="button-5" style="font-size: 20pt; margin-top: 20px;" role="button" onclick="playS2();">🔊</button>
+            </div>
+            <div style="width: 250px; float: left;">
+                <p><span class="orange-text">la</span> niñ<span class="orange-text">a</span></p>
+                <p>dziewczynka</p>
+            </div>
+            <div style="width: 100px; float: left;">
+                <img src="part1/images/girl.svg" alt="Girl picture" class="img-in-info">
+            </div>
+        </div>
+        <p style="margin-bottom: 40px;">Zwróć uwagę, że przed rzeczownikiem stawiamy specjalne słowo, które nazywamy <span class="orange-text">rodzajnikiem</span>. Gdy rzeczownik jest rodzaju męskiego wstawiamy przed nim <span class="orange-text">el</span>, a gdy słowo jest rodzaju żeńskiego wstawiamy <span class="orange-text">la</span>.</p>
+        <div style="text-align: center;">
+            <button class="button-5" role="button" onclick="window.location.href='part1-2.html'">Dalej</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function playS1() {
+        var snd = new Audio("part1/sounds/s1.mp3")
+        snd.play()
+        snd.currentTime = 0;
+    }
+
+    function playS2() {
+        var snd = new Audio("part1/sounds/s2.mp3")
+        snd.play()
+        snd.currentTime = 0;
+    }
+    
+</script>
+</html>
