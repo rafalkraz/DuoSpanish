@@ -14,19 +14,20 @@
     <button class="button-5" role="button" onclick="window.location.href='../lessons-list.html'">Zakończ lekcję</button>
     <button class="button-5" role="button" onclick="window.open('../dictionary/home.html')">Podpowiedź</button>
     <button class="button-5" role="button" onclick="reloadIframe();">(dev) Odśwież iFrame</button>
-    <p id="questionCounter">Pozostało</p>
+    <!-- <p id="questionCounter">Pozostało</p>-->
     <div class="title">
         <h1 style="margin-bottom: 5px;">Lekcja 1</h1>
-        <h2 style="margin-top: 10px;">część 2 z 6</h2>
+        <h2 style="margin-top: 10px;">część 3 z 6</h2>
     </div>
     <div id="exercise-wrapper"></div>
-    <button class="button-5" id="checkButton" role="button" onclick="checkAnswer();">Sprawdź</button>
+    <br><br><br><p style="text-align: center;">Chwilowo nic tutaj nie ma</p>
+    <!--<button class="button-5" id="checkButton" role="button" onclick="checkAnswer();">Sprawdź</button>
     <div class="result-div result-div-hidden" id="result-div-id">
         <div style="margin-bottom: 20px; margin-left: 10px;">
             <h3 id="result-div-title"></h3>
-            <button class="button-5" role="button" onclick="goToNextQuestion();">Kontynuuj</button>
+            <button class="button-5" id="checkButton" role="button" onclick="goToNextQuestion();">Kontynuuj</button>
         </div>
-    </div>
+    </div>-->
 </body>
 <script>
     let exercisesNotDone = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
@@ -34,14 +35,15 @@
     let numberOfAnsweredQuestions = 0;
     const checkButton = document.getElementById("checkButton");
     const questionCounter = document.getElementById("questionCounter");
+    const iFrame = document.getElementById("ifrm");
     const resultDivId = document.getElementById("result-div-id");
     const resultDivTitle = document.getElementById("result-div-title");
     const exerciseWrapper = document.getElementById("exercise-wrapper");
     window.textToDisplayOnResultDiv = "not defined";
 
     window.onload = () => {
-        loadQuestionIntoWrapper("1");
-        disableCheckButton();
+        //loadQuestionIntoWrapper("1");
+        //disableCheckButton();
     }
 
     const disableCheckButton = () => {
@@ -53,7 +55,7 @@
     }
 
     const loadQuestionIntoWrapper = (exerciseId) => {
-        exerciseWrapper.innerHTML = `<iframe src="./part2/exercises/ex${exerciseId}.html" id="ifrm">`;
+        exerciseWrapper.innerHTML = `<iframe src="./part3/exercises/ex${exerciseId}.html" id="ifrm">`;
         if (exercisesNotDone.length == 1) {
             questionCounter.innerHTML = "Pozostało 1 pytanie."
         }
@@ -66,8 +68,8 @@
     }
 
     const checkAnswer = () => {
-        document.getElementById("ifrm").contentWindow.postMessage('sendAnswerToVar');
-        document.getElementById("ifrm").contentWindow.postMessage('check');
+        iFrame.contentWindow.postMessage('sendAnswerToVar');
+        iFrame.contentWindow.postMessage('check');
     }
 
     const goToNextQuestion = () => {
@@ -104,7 +106,7 @@
             resultDivId.classList.remove("result-div-hidden");
         }
         else {
-            resultDivTitle.innerHTML = `Prawidłowa odpowiedź to: <p>${textToDisplayOnResultDiv}</p>`;
+            resultDivTitle.innerHTML = `Prawidłowa odpowiedź to: <p>${textToDisplayOnresultDivId}</p>`;
             resultDivId.classList.add("result-wrong");
             resultDivId.classList.remove("result-ok");
             resultDivId.classList.remove("result-div-hidden");
@@ -134,7 +136,7 @@
     }
 
     const reloadIframe = () => {
-        document.getElementById('ifrm').src = document.getElementById('ifrm').src;
+        iFrame.src = iFrame.src;
     }
 </script>
 </html>

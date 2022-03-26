@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <title>Lekcje</title>
+    <title>Lekcja 1</title>
 </head>
 <body>
     <button class="button-5" role="button" onclick="window.location.href='../lessons-list.html'">Zakończ lekcję</button>
@@ -26,82 +26,40 @@
                     <th>Czasownik być (ser)</th>
                 </tr>
                 <tr>
-                    <td><a class="play-sound" onclick="playS5();">🔊</a><b>yo</b><br>ja</td>
-                    <td><a class="play-sound" onclick="playS6();">🔊</a><span class="orange-text">soy</span><br>jestem</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s5.mp3');">🔊</a><b>yo</b><br>ja</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s6.mp3');">🔊</a><span class="orange-text">soy</span><br>jestem</td>
                 </tr>
                 <tr>
-                    <td><a class="play-sound" onclick="playS7();">🔊</a><b>tú</b><br>ty</td>
-                    <td><a class="play-sound" onclick="playS8();">🔊</a><span class="orange-text">eres</span><br>jesteś</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s7.mp3');">🔊</a><b>tú</b><br>ty</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s8.mp3');">🔊</a><span class="orange-text">eres</span><br>jesteś</td>
                 </tr>
                 <tr>
-                    <td><a class="play-sound" onclick="playS9();">🔊</a><b>él</b><br>on</td>
-                    <td><a class="play-sound" onclick="playS10();">🔊</a><span class="orange-text">es</span><br>jest</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s9.mp3');">🔊</a><b>él</b><br>on</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s10.mp3');">🔊</a><span class="orange-text">es</span><br>jest</td>
                 </tr>
                 <tr>
-                    <td><a class="play-sound" onclick="playS11();">🔊</a><b>ella</b><br>ona</td>
-                    <td><a class="play-sound" onclick="playS10();">🔊</a><span class="orange-text">es</span><br>jest</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s11.mp3');">🔊</a><b>ella</b><br>ona</td>
+                    <td><a class="play-sound" onclick="playSound('./part1/sounds/s10.mp3');">🔊</a><span class="orange-text">es</span><br>jest</td>
                 </tr>
             </table>
         </div>
         <div style="width: 500px; margin: auto; margin-top: 40px; text-align: center;">
-            <img src="part1/images/ser.svg" alt="Girl and boy talking" width="400px" style="border: 2px solid rgb(145, 145, 145); border-radius: 10px;"><br>
-            <p style="margin-bottom: 40px; margin-left: 7px; display: inline;"><a class="play-sound" onclick="playS12();">🔊</a>Yo <span class="orange-text">soy</span> una niña. Tú <span class="orange-text">eres</span> un niño.</p>
+            <img src="./part1/images/ser.svg" alt="Girl and boy talking" width="400px" style="border: 2px solid rgb(145, 145, 145); border-radius: 10px;"><br>
+            <p style="margin-bottom: 40px; margin-left: 7px; display: inline;"><a class="play-sound" onclick="playSound('./part1/sounds/s12.mp3');">🔊</a>Yo <span class="orange-text">soy</span> una niña. Tú <span class="orange-text">eres</span> un niño.</p>
             <p style="margin-bottom: 40px; margin-left: 7px;">Tłumaczenie: Ja jestem dziewczyną. Ty jesteś chłopakiem.</p>
         </div>
         
         <div style="text-align: center;">
-            <button class="button-5" role="button" onclick="window.location.href='part1-4.html'">Wstecz</button>
-            <button class="button-5" role="button" onclick="window.location.href='part2.html'">Idź do części 2</button>
+            <button class="button-5" role="button" onclick="window.location.href='./part1-4.html'">Wstecz</button>
+            <button class="button-5" role="button" onclick="window.location.href='./part2.html'">Idź do części 2</button>
         </div>
     </div>
     
 </body>
 <script>
-    function playS5() {
-        var snd = new Audio("part1/sounds/s5.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-
-    function playS6() {
-        var snd = new Audio("part1/sounds/s6.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-
-    function playS7() {
-        var snd = new Audio("part1/sounds/s7.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-
-    function playS8() {
-        var snd = new Audio("part1/sounds/s8.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-    
-    function playS9() {
-        var snd = new Audio("part1/sounds/s9.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-
-    function playS10() {
-        var snd = new Audio("part1/sounds/s10.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-
-    function playS11() {
-        var snd = new Audio("part1/sounds/s11.mp3")
-        snd.play()
-        snd.currentTime = 0;
-    }
-
-    function playS12() {
-        var snd = new Audio("part1/sounds/s12.mp3")
-        snd.play()
+    const playSound = (soundPath) => {
+        const snd = new Audio(soundPath);
+        snd.play();
         snd.currentTime = 0;
     }
 </script>

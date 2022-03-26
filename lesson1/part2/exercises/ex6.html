@@ -60,6 +60,7 @@
         userAnswer = userAnswer.replace(";", "");
         userAnswer = userAnswer.replace("?", "");
         userAnswer = userAnswer.toLowerCase();
+        userAnswer = userAnswer.trim();
         console.log(userAnswer);
         if (userAnswer == correctanswer1 || userAnswer == correctanswer2 || userAnswer == correctanswer3) {
             return true;
