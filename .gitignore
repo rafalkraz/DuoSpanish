@@ -105,3 +105,4 @@ dist
 
 #Other folders
 release-builds
+.DS_Store
